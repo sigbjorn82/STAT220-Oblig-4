@@ -9,3 +9,38 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+\underline{Problem 6.1}
+
+Vi har gitt transition matrix P:
+```{r}
+P=matrix(c(0.7, 0.2, 0.1, 0.0, 0.6, 0.4, 0.5, 0.0, 0.5), nrow=3, ncol=3, byrow = TRUE)
+dimnames(P)=list(c('0','1','2'), c('0','1','2'))
+print(P)
+```
+
+a)
+  Since $P_{i,j}^{m} = P(x_{m+n}=j|x_{n})$ and $P^{(m)}=P^{m}$:
+  
+  $\Rightarrow{P^{(3)}=P^{3}}$ og vi får følgende matrise
+
+```{r}
+P_3 = P^3
+print(P_3)
+print(P_3[1,2])
+```
+slik at:
+$P(x_{3}=1|x_{0}=0) = \underline{\underline{0.008}}$
+
+
+samme egenskap gjelder også for $P^{(3)}=P^{3}$
+```{r}
+P_4 = P^4
+print(P_4)
+print(P_4[1,2])
+```
+
+og vi får da:
+
+$P(x_{3}=1|x_{0}=0) = \underline{\underline{0.0016}}$
+
+b)

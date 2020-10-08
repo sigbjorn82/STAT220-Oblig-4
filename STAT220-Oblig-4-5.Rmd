@@ -71,5 +71,13 @@ $2\rightarrow 1\rightarrow 0$ and $1\rightarrow 0$
   
 It is therfore irreducible.
 
-
+Periodicity:
+    Since the period of a state is the largest $d$ that satisfy following properties: 
+      - $p_{ii}^{(n)} = 0$ whenever $n$ is not deviceble by $d$. 
+      - The period $i$ is shown by $d(i)$. 
+      - If $p_{ii}^{(n)} = 0$, for all $n>0 \rightarrowd(i)=\infty$
+      and...
+      $i$ is periodic if $d(i)>1$ and aperiodic if $di=1$
+      
+    It is aperiodic since there are several sequences of steps to go from a state and back again ($i\rightarrow i$),icluding the fact that all the states are self periodic the markov chain is aperiodic.
   

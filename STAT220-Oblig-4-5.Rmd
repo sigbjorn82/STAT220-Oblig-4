@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Vi har gitt transition matrix P:
 ```{r}
+library(matrixcalc)
 P=matrix(c(0.7, 0.2, 0.1, 0.0, 0.6, 0.4, 0.5, 0.0, 0.5), nrow=3, ncol=3, byrow = TRUE)
 dimnames(P)=list(c('0','1','2'), c('0','1','2'))
 print(P)
@@ -24,7 +25,7 @@ a)
   $\Rightarrow{P^{(3)}=P^{3}}$ og vi får følgende matrise
 
 ```{r}
-P_3 = P^3
+P_3 = matrix.power(P,3)
 print(P_3)
 print(P_3[1,2])
 ```
@@ -34,7 +35,7 @@ $P(x_{3}=1|x_{0}=0) = \underline{\underline{0.008}}$
 
 samme egenskap gjelder også for $P^{(3)}=P^{3}$
 ```{r}
-P_4 = P^4
+P_4 = matrix.power(P,4)
 print(P_4)
 print(P_4[1,2])
 ```
@@ -43,4 +44,27 @@ og vi får da:
 
 $P(x_{3}=1|x_{0}=0) = \underline{\underline{0.0016}}$
 
-b)
+b) 
+ As we se from the graphic presentation below, it is possible to go from any state to another trough one or more steps:
+ 
+ 
+```{r}
+
+library(diagram)
+## Loading required package: shape
+plotmat(P, box.size = 0.028, arr.lcol='blue')
+```
+
+from state 0: 
+  $0 \rightarrow{2} \rightarrow{1}̋$
+
+from state 1:
+  $1 \rightarrow{0} \rightarrow{2}$
+
+from state 2:
+  $2 \rightarrow{1} \rightarrow{0}$̋and $2 \rightarrow{0}̋$
+  
+It is therfore irreducible.
+
+
+  

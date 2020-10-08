@@ -9,6 +9,14 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+Library in use:
+```{r}
+library(tinytex)
+library(matrixcalc)
+library(shape)
+library(diagram)
+```
+
 \underline{Problem 6.1}
 
 Vi har gitt transition matrix P:
@@ -49,9 +57,6 @@ b)
  
  
 ```{r}
-
-library(diagram)
-## Loading required package: shape
 plotmat(P, box.size = 0.028, arr.lcol='blue')
 ```
 

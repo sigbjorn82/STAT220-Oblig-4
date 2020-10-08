@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.21)  8 OCT 2020 16:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.21)  8 OCT 2020 16:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -653,32 +653,32 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 114.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 114.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 114.
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 119.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 117.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 120.
-LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 122
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 118.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 125.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 125.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 125.
+LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 133
 .
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [1
 
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<STAT220-Oblig-4-5_files/figure-latex/unnamed-chunk-4-1.pdf, id=21, 298.11375pt
+<STAT220-Oblig-4-5_files/figure-latex/unnamed-chunk-5-1.pdf, id=21, 298.11375pt
  x 149.55875pt>
-File: STAT220-Oblig-4-5_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (
+File: STAT220-Oblig-4-5_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (
 type pdf)
-<use STAT220-Oblig-4-5_files/figure-latex/unnamed-chunk-4-1.pdf>
-Package pdftex.def Info: STAT220-Oblig-4-5_files/figure-latex/unnamed-chunk-4-1
+<use STAT220-Oblig-4-5_files/figure-latex/unnamed-chunk-5-1.pdf>
+Package pdftex.def Info: STAT220-Oblig-4-5_files/figure-latex/unnamed-chunk-5-1
 .pdf  used on input line 224.
 (pdftex.def)             Requested size: 298.13121pt x 149.5675pt.
 
@@ -692,12 +692,12 @@ Type  H <return>  for immediate help.
 l.226 ...te 0: \(0 \rightarrow{2} \rightarrow{1}̋
                                                   \) 
 Here is how much of TeX's memory you used:
- 12794 strings out of 492616
- 187973 string characters out of 6129481
- 300536 words of memory out of 5000000
- 16517 multiletter control sequences out of 15000+600000
- 39892 words of font info for 64 fonts, out of 8000000 for 9000
+ 12791 strings out of 492616
+ 187924 string characters out of 6129481
+ 299536 words of memory out of 5000000
+ 16515 multiletter control sequences out of 15000+600000
+ 39573 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 35i,6n,38p,825b,405s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 35i,6n,38p,825b,356s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 !  ==> Fatal error occurred, no output PDF file produced!

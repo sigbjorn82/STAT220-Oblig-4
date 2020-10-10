@@ -66,10 +66,25 @@ $0\rightarrow 2\rightarrow 1$
 from state 1:
 $1\rightarrow 0\rightarrow 2$
 
-from state 2:
+from state 2:()
 $2\rightarrow 1\rightarrow 0$ and $1\rightarrow 0$
   
 It is therfore irreducible.
 
+Periodicity:
+    Since the period of a state is the largest $d$ that satisfy following properties: 
+      - $p_{ii}^{(n)} = 0$ whenever $n$ is not deviceble by $d$. 
+      - The period $i$ is shown by $d(i)$. 
+      - If $P_{ii}^{(n)} = 0$, for all $n>0\rightarrow{i}=\infty$
+      
+      and...
+      $i$ is periodic if $d(i)>1$ and aperiodic if $di=1$
+      
+    It is aperiodic since there are several sequences of steps to go from a state and back again ($i\rightarrow i$),icluding the fact that all the states are self periodic the markov chain is aperiodic.
+  
+Transient or recurrent? $\rightarrow$ It is recurrent!
+  It might stop and loop at a position or between state 2 and 0 wich are comunicating, but eventually it will occure in any of the states by a certanty of 100% as in the formal definition:
+   $f_{ii}=P(X_{n} = i, \textrm{for some } n>\geq|w_{0}=i)$ for any state $i$ is Recurrent if $f_{ii}=1$ and transient if Recurrent if $f_{ii}<1$.
+  
 
   

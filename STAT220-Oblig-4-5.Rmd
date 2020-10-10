@@ -61,13 +61,13 @@ plotmat(P, box.size = 0.028, arr.lcol='blue')
 ```
 
 from state 0: 
-  $0 \rightarrow{2} \rightarrow{1}̋$
+$0\rightarrow 2\rightarrow 1$
 
 from state 1:
-  $1 \rightarrow{0} \rightarrow{2}$
+$1\rightarrow 0\rightarrow 2$
 
 from state 2:
-  $2 \rightarrow{1} \rightarrow{0}$̋and $2 \rightarrow{0}̋$
+$2\rightarrow 1\rightarrow 0$ and $1\rightarrow 0$
   
 It is therfore irreducible.
 

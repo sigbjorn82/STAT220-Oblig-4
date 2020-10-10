@@ -84,7 +84,36 @@ Periodicity:
   
 Transient or recurrent? $\rightarrow$ It is recurrent!
   It might stop and loop at a position or between state 2 and 0 wich are comunicating, but eventually it will occure in any of the states by a certanty of 100% as in the formal definition:
-   $f_{ii}=P(X_{n} = i, \textrm{for some } n>\geq|w_{0}=i)$ for any state $i$ is Recurrent if $f_{ii}=1$ and transient if Recurrent if $f_{ii}<1$.
-  
+   $f_{ii}=P(X_{n} = i, \textrm{for some } n\geq|w_{0}=i)$ for any state $i$ is Recurrent if $f_{ii}=1$ and transient if Recurrent if $f_{ii}<1$.
 
-  
+
+\underline{Problem 6.2}
+
+a)
+$G: Green$
+$R: Red$
+
+We start initiatly at $GR$ and pick a random ball with $p=1/2$. There is
+
+```{r}
+library(matrixcalc)
+A=matrix(c(0, 1, 0, 0.5, 0, 0.5, 0, 1, 0), nrow=3, ncol=3, byrow = TRUE)
+dimnames(A)=list(c('GG','GR','RR'), c('GG','GR','RR'))
+plotmat(A, box.size = 0.028, arr.lcol='blue')
+
+```
+
+Wich gives following matrix
+
+
+```{r}
+M=matrix(c((1/4), (1/2), (1/4), (1/3), 0, (2/3), (1/2), 0.0, (1/2)), nrow=3, ncol=3, byrow = TRUE)
+dimnames(M)=list(c('0','1','2'), c('0','1','2'))
+print(M)
+```
+```{r}
+dimnames(M)=list(c('1','2','3'), c('1','2','3'))
+plotmat(M, box.size = 0.028, arr.lcol='blue', latex = TRUE, endhead = FALSE)
+```
+
+this did not work

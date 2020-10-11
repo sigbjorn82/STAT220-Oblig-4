@@ -15,6 +15,7 @@ library(tinytex)
 library(matrixcalc)
 library(shape)
 library(diagram)
+library(igraph)
 ```
 
 \underline{Problem 6.1}
@@ -38,7 +39,7 @@ print(P_3)
 print(P_3[1,2])
 ```
 slik at:
-$P(x_{3}=1|x_{0}=0) = \underline{\underline{0.008}}$
+$P(x_{3}=1|x_{0}=0) = \underline{\underline{0.264}}$
 
 
 samme egenskap gjelder også for $P^{(3)}=P^{3}$
@@ -50,14 +51,16 @@ print(P_4[1,2])
 
 og vi får da:
 
-$P(x_{3}=1|x_{0}=0) = \underline{\underline{0.0016}}$
+$P(x_{3}=1|x_{0}=0) = \underline{\underline{0.254}}$
 
 b) 
  As we se from the graphic presentation below, it is possible to go from any state to another trough one or more steps:
  
  
 ```{r}
-plotmat(P, box.size = 0.028, arr.lcol='blue')
+h <- graph_from_adjacency_matrix(P, weighted = "prob")
+E(h)$prob <- ifelse(is.nan(E(h)$prob), NA, E(h)$prob)
+plot(h, edge.label = round(E(h)$prob, 2), edge.arrow.size = .25, edge.curved=-0.2, edge.label.cex = .5)
 ```
 
 from state 0: 
@@ -78,13 +81,94 @@ Periodicity:
       - If $P_{ii}^{(n)} = 0$, for all $n>0\rightarrow{i}=\infty$
       
       and...
-      $i$ is periodic if $d(i)>1$ and aperiodic if $di=1$
       
-    It is aperiodic since there are several sequences of steps to go from a state and back again ($i\rightarrow i$),icluding the fact that all the states are self periodic the markov chain is aperiodic.
+  $i$ is periodic if $d(i)>1$ and aperiodic if $di=1$
+      
+  It is aperiodic since there are several sequences of steps to go from a state and back again ($i\rightarrow i$),
+  icluding the fact that all the states are self periodic the markov chain is aperiodic.
   
 Transient or recurrent? $\rightarrow$ It is recurrent!
   It might stop and loop at a position or between state 2 and 0 wich are comunicating, but eventually it will occure in any of the states by a certanty of 100% as in the formal definition:
-   $f_{ii}=P(X_{n} = i, \textrm{for some } n>\geq|w_{0}=i)$ for any state $i$ is Recurrent if $f_{ii}=1$ and transient if Recurrent if $f_{ii}<1$.
-  
+   $f_{ii}=P(X_{n} = i, \textrm{for some } n\geq|w_{0}=i)$ for any state $i$ is Recurrent if $f_{ii}=1$ and transient if Recurrent if $f_{ii}<1$.
 
+
+\underline{Problem 6.2}
+
+a)
+$G: Green$
+$R: Red$
+
+We start initiatly at $GR$ and pick a random ball with $p=1/2$. We ar then sent to a state of $RR$ or $GG$ where the probability of being returned to State $GR$ is $100\%$
+
+```{r}
+library(matrixcalc)
+A=matrix(c(0, 1, 0, 0.5, 0, 0.5, 0, 1, 0), nrow=3, ncol=3, byrow = TRUE)
+dimnames(A)=list(c('GG','GR','RR'), c('GG','GR','RR'))
+```
+
+```{r}
+f <- graph_from_adjacency_matrix(A, weighted = "prob")
+E(f)$prob <- ifelse(is.nan(E(f)$prob), NA, E(f)$prob)
+plot(f, edge.label = round(E(f)$prob, 2),vertex.size=40, edge.arrow.size = .25, edge.curved=0.3, edge.label.cex = .5)
+```
+
+Wich gives following matrix
+
+
+```{r}
+print(A)
+```
+
+and following for picking red ball in the future entering the state of $GR\rightarrow$ $P(X_{n}=j|X_{0}=1):$ #her må jeg få sendt ett spørsmål
+```{r}
+print(A[2,])
+```
+
+
+  b)
+    $d(GR)=2$ og $d(GG)=d(RR)=4$ som gir største felles nevner 2 og dermed er den periodisk med periode 2.
+
+
+\underline{Problem 6.3}
+
+  a)
+```{r}
+B=matrix(c((1/3), 0.0, (1/3), 0.0, 0.0, (1/3), 
+           (1/2), (1/4), (1/4), 0.0, 0.0, 0.0, 
+           0.0, 0.0, (1/2), 0.0, (1/2), 0.0,
+           (1/4), (1/4), (1/4), 0.0, 0.0, (1/4),
+           0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 
+           0.0, 0.0, 0.0, 0.0, 0.0, 1.0), nrow=6, ncol=6, byrow = TRUE)
+dimnames(B)=list(c('0','1','2','3','4','5'), c('0','1','2','3','4','5'))
+```
+
+
+```{r}
+g <- graph_from_adjacency_matrix(B, weighted = "prob")
+E(g)$prob <- ifelse(is.nan(E(g)$prob), NA, E(g)$prob)
+plot(g, edge.label = round(E(g)$prob, 2), edge.arrow.size = .25, edge.label.cex = .5)
+```
+
+\newpage
+  b)
+    \underline{As we se from the graph above:}
+\newline{}
+  \textbf{Transient States:}
   
+  State 1, 2, 3 and 4 will at some pint possibly loop, but ultimatly it will end up in 
+  state 5 where it will loop for a infinate time.
+ \newline
+ 
+  \textbf{Recurrent States:}
+        
+  State 5 is self-recurrent
+  \newline
+
+
+c)
+    \underline{Communicating States:}
+  
+  $(2\leftrightarrow{4})$, $(1\leftrightarrow{1})$, $(2\leftrightarrow{2})$ and $(5\leftrightarrow{5})$
+  
+d)
+        

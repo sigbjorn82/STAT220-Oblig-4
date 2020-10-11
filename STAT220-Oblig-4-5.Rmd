@@ -38,7 +38,7 @@ print(P_3)
 print(P_3[1,2])
 ```
 slik at:
-$P(x_{3}=1|x_{0}=0) = \underline{\underline{0.008}}$
+$P(x_{3}=1|x_{0}=0) = \underline{\underline{0.264}}$
 
 
 samme egenskap gjelder også for $P^{(3)}=P^{3}$
@@ -50,7 +50,7 @@ print(P_4[1,2])
 
 og vi får da:
 
-$P(x_{3}=1|x_{0}=0) = \underline{\underline{0.0016}}$
+$P(x_{3}=1|x_{0}=0) = \underline{\underline{0.254}}$
 
 b) 
  As we se from the graphic presentation below, it is possible to go from any state to another trough one or more steps:
@@ -78,9 +78,11 @@ Periodicity:
       - If $P_{ii}^{(n)} = 0$, for all $n>0\rightarrow{i}=\infty$
       
       and...
-      $i$ is periodic if $d(i)>1$ and aperiodic if $di=1$
       
-    It is aperiodic since there are several sequences of steps to go from a state and back again ($i\rightarrow i$),icluding the fact that all the states are self periodic the markov chain is aperiodic.
+  $i$ is periodic if $d(i)>1$ and aperiodic if $di=1$
+      
+  It is aperiodic since there are several sequences of steps to go from a state and back again ($i\rightarrow i$),
+  icluding the fact that all the states are self periodic the markov chain is aperiodic.
   
 Transient or recurrent? $\rightarrow$ It is recurrent!
   It might stop and loop at a position or between state 2 and 0 wich are comunicating, but eventually it will occure in any of the states by a certanty of 100% as in the formal definition:
@@ -93,7 +95,7 @@ a)
 $G: Green$
 $R: Red$
 
-We start initiatly at $GR$ and pick a random ball with $p=1/2$. There is
+We start initiatly at $GR$ and pick a random ball with $p=1/2$. We ar then sent to a state of $RR$ or $GG$ where the probability of being returned to State $GR$ is $100\%$
 
 ```{r}
 library(matrixcalc)
@@ -107,13 +109,58 @@ Wich gives following matrix
 
 
 ```{r}
-M=matrix(c((1/4), (1/2), (1/4), (1/3), 0, (2/3), (1/2), 0.0, (1/2)), nrow=3, ncol=3, byrow = TRUE)
-dimnames(M)=list(c('0','1','2'), c('0','1','2'))
-print(M)
-```
-```{r}
-dimnames(M)=list(c('1','2','3'), c('1','2','3'))
-plotmat(M, box.size = 0.028, arr.lcol='blue', latex = TRUE, endhead = FALSE)
+print(A)
 ```
 
-this did not work
+and following for picking red ball in the future entering the state of $GR\rightarrow$ $P(X_{n}=j|X_{0}=1):$ #her må jeg få sendt ett spørsmål
+```{r}
+print(A[2,])
+```
+
+
+  b)
+    $d(GR)=2$ og $d(GG)=d(RR)=4$ som gir største felles nevner 2 og dermed er den periodisk med periode 2.
+
+
+\underline{Problem 6.3}
+
+  a)
+```{r}
+B=matrix(c((1/3), 0.0, (1/3), 0.0, 0.0, (1/3), 
+           (1/2), (1/4), (1/4), 0.0, 0.0, 0.0, 
+           0.0, 0.0, (1/2), 0.0, (1/2), 0.0,
+           (1/4), (1/4), (1/4), 0.0, 0.0, (1/4),
+           0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 
+           0.0, 0.0, 0.0, 0.0, 0.0, 1.0), nrow=6, ncol=6, byrow = TRUE)
+dimnames(B)=list(c('0','1','2','3','4','5'), c('0','1','2','3','4','5'))
+```
+
+
+
+```{r}
+plotmat(B, box.size = 0.028, arr.lcol='blue')
+```
+
+\newpage
+  b)
+    \underline{As we se from the graph above:}
+\newline{}
+  \textbf{Transient States:}
+  
+  State 1, 2, 3 and 4 will at some pint possibly loop, but ultimatly it will end up in 
+  state 5 where it will loop for a infinate time.
+ \newline
+ 
+  \textbf{Recurrent States:}
+        
+  State 5 is self-recurrent
+  \newline
+
+
+c)
+    \underline{Communicating States:}
+  
+  $(2\leftrightarrow{4})$, $(1\leftrightarrow{1})$, $(2\leftrightarrow{2})$ and $(5\leftrightarrow{5})$
+  
+d)
+        

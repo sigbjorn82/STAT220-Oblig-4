@@ -22,7 +22,6 @@ library(igraph)
 
 Vi har gitt transition matrix P:
 ```{r}
-library(matrixcalc)
 P=matrix(c(0.7, 0.2, 0.1, 0.0, 0.6, 0.4, 0.5, 0.0, 0.5), nrow=3, ncol=3, byrow = TRUE)
 dimnames(P)=list(c('0','1','2'), c('0','1','2'))
 print(P)
@@ -101,7 +100,6 @@ $R: Red$
 We start initiatly at $GR$ and pick a random ball with $p=1/2$. We ar then sent to a state of $RR$ or $GG$ where the probability of being returned to State $GR$ is $100\%$
 
 ```{r}
-library(matrixcalc)
 A=matrix(c(0, 1, 0, 0.5, 0, 0.5, 0, 1, 0), nrow=3, ncol=3, byrow = TRUE)
 dimnames(A)=list(c('GG','GR','RR'), c('GG','GR','RR'))
 ```
@@ -130,7 +128,7 @@ print(A[2,])
 
 
 \underline{Problem 6.3}
-
+    Due to previous use of P as variable, it is here substituted for B
   a)
 ```{r}
 B=matrix(c((1/3), 0.0, (1/3), 0.0, 0.0, (1/3), 
@@ -170,5 +168,16 @@ c)
   
   $(2\leftrightarrow{4})$, $(1\leftrightarrow{1})$, $(2\leftrightarrow{2})$ and $(5\leftrightarrow{5})$
   
-d)
-        
+d) with statespace = {1,3,0,2,4,5}, we get following probability matrix (Denoted - C):
+```{r}
+C=matrix(c((1/4), 0.0, (1/2), (1/4), 0.0, 0.0, 
+           0.0, 0.0, 0.0, (1/2), (1/2), 0.0, 
+           0.0, 0.0, (1/3), (1/3), 0.0, (1/3),
+           0.0, 0.0, 0.0, (1/2), (1/2), 0.0,
+           0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 
+           0.0, 0.0, 0.0, 0.0, 0.0, 1.0), nrow=6, ncol=6, byrow = TRUE)
+dimnames(C)=list(c('1','3','0','2','4','5'), c('1','3','0','2','4','5'))
+
+print(C)
+```
+    

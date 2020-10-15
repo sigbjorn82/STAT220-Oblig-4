@@ -109,7 +109,7 @@ dimnames(A)=list(c('GG','GR','RR'), c('GG','GR','RR'))
 ```{r}
 f <- graph_from_adjacency_matrix(A, weighted = "prob")
 E(f)$prob <- ifelse(is.nan(E(f)$prob), NA, E(f)$prob)
-plot(f, edge.label = round(E(f)$prob, 2),vertex.size=40, edge.arrow.size = .25, edge.curved=0.3, edge.label.cex = .5)
+plot(f, edge.label = round(E(f)$prob, 2),vertex.size=30, edge.arrow.size = .25, edge.curved=0.3, edge.label.cex = .5)
 ```
 
 Wich gives following matrix
@@ -140,6 +140,7 @@ B=matrix(c((1/3), 0.0, (1/3), 0.0, 0.0, (1/3),
            0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 
            0.0, 0.0, 0.0, 0.0, 0.0, 1.0), nrow=6, ncol=6, byrow = TRUE)
 dimnames(B)=list(c('0','1','2','3','4','5'), c('0','1','2','3','4','5'))
+data.frame(B)
 ```
 
 

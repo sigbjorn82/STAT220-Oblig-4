@@ -17,14 +17,9 @@ library(shape)
 library(diagram)
 library(igraph)
 library(devtools)
-<<<<<<< HEAD
-install_github("markheckmann/mat2tex")
-=======
-library(mat2tex)
->>>>>>> c77b693d277632f65fcd54608676edaeda064dbc
 ```
-
-\underline{Problem 6.1}
+\newpage
+\underline{\textbf{Problem 6.1}}
 
 Vi har gitt transition matrix P:
 ```{r}
@@ -97,7 +92,7 @@ Transient or recurrent? $\rightarrow$ It is recurrent!
    $f_{ii}=P(X_{n} = i, \textrm{for some } n\geq|w_{0}=i)$ for any state $i$ is Recurrent if $f_{ii}=1$ and transient if Recurrent if $f_{ii}<1$.
 
 
-\underline{Problem 6.2}
+\underline{Problem 6.?}
 
 a)
 $G: Green$
@@ -131,9 +126,9 @@ print(A[2,])
 
   b)
     $d(GR)=2$ og $d(GG)=d(RR)=4$ som gir største felles nevner 2 og dermed er den periodisk med periode 2.
+\newpage
 
-
-\underline{Problem 6.3}
+\underline{\textbf{Problem 6.2}}
     Due to previous use of P as variable, it is here substituted for B
   a)
 ```{r}
@@ -146,19 +141,7 @@ B=round(matrix(c((1/3), 0.0, (1/3), 0.0, 0.0, (1/3),
 dimnames(B)=list(c('0','1','2','3','4','5'), c('0','1','2','3','4','5'))
 print(B)
 ```
-In a nicer way in Latex:
 
-##$$P=\begin{equation*}
-##\mathbf{}\left[\begin{matrix}
-##\frac{1}{3} & 0 & \frac{1}{3} & \frac{1}{3} & 0 & 0 \\ 
-##\frac{1}{2} & \frac{1}{4} & \frac{1}{4} & 0 & 0 & 0 \\
-##0 & 0 & \frac{1}{2} & 0 & \frac{1}{2} & 0 & \\
-##\frac{1}{4} & \frac{1}{4} & \frac{1}{4} & 0 & 0 & \frac{1}{4} \\
-##0 & 0 & 0 & 1 & 0 & 0 \\
-##0 & 0 & 0 & 0 & 0 & 1
-##\end{matrix}\right] 
-##\end{equation*}
-##$$
 
 ```{r}
 g <- graph_from_adjacency_matrix(B, weighted = "prob")
@@ -199,25 +182,8 @@ dimnames(C)=list(c('1','3','0','2','4','5'), c('1','3','0','2','4','5'))
 
 print(C)
 ```
-<<<<<<< HEAD
-In a nicer way in Latex:
 
-$$ A = " %_% C %_% "$$
-=======
 
-In a nicer way in Latex with original variable "P":
-
-#$$P=\begin{equation*}
-#\mathbf{}\left[\begin{matrix}
-#\frac{1}{4} & 0 & \frac{1}{2} & \frac{1}{4} & 0 & 0\\ 
-#\frac{1}{4} & 0 & \frac{1}{4} & \frac{1}{4} & 0 & \frac{1}{4} & \\
-#0 & 0 & \frac{1}{3} & \frac{1}{3} & 0 & \frac{1}{3} & \\
-#0 & 0 & 0 & \frac{1}{2} & \frac{1}{2} & 0 \\
-#0 & 0 & 0 & 1 & 0 & 0 \\
-#0 & 0 & 0 & 0 & 0 & 1
-#\end{matrix}\right] 
-#\end{equation*}
-#$$
 
   e) 
 ```{r}
@@ -228,24 +194,37 @@ dimnames(R)=list(c('1','3','0'), c('2','4','5'))
 print(R)
 ```
 
-#$$R=\begin{equation*}
-#\mathbf{}\left[\begin{matrix}
-#\frac{1}{4} & 0 & 0\\ 
-#\frac{1}{4} & 0 & \frac{1}{4} & \\
-#\frac{1}{3} & 0 & \frac{1}{3} & \\
-#\end{matrix}\right] 
-#\end{equation*}$$
+This gives $P_{0}(X_{T}=5)=P(X_{T}=5|X_{T-1}=0)=0.3333=\frac{1}{3}$
+\newpage
 
-#This gives $P_{0}(X_{T}=5)=P(X_{T}=5|X_{T-1}=0)=0.3333=\frac{1}{3}$
-#and the expectation $E(X_{T}=5|X_{T-1})=1+\sum_{j\in{S}}E(T_{P}=j|X_{T-1}=0)\cdot{P(X_{T}=j|X_{T-1}=#0})$
-#$=1+\sum_{j\in{S}}m_{0j}\cdot{P(X_{T}=j|X_{T-1}=0})$
->>>>>>> c77b693d277632f65fcd54608676edaeda064dbc
+and the expectation:\newline
+$E(X_{T}=5|X_{T-1})=1+\sum_{j\in{S}}E(T_{P}=j|X_{T-1}=0)\cdot{P(X_{T}=j|X_{T-1}=0})\\=1+\sum_{j\in{S}}m_{0j}\cdot{P(X_{T}=j|X_{T-1}=0})$\newline
+
+We are proceeding for state 5 such that $m_{j,0}=1$, $m_{2,0}=0$.\newline
+
+$E(X_{T}=5|X_{T-1})=1+m_{0,0}\cdot{P(X_{T}=0|X_{T-1}=0)}\\+m_{2,0}\cdot{P(X_{T}=2|X_{T-1}=0)}+m_{5,0}\cdot{P(X_{T}=5|X_{T-1}=0)}\\=1+1\cdot{\frac{1}{3}}+1\cdot{\frac{1}{3}}+0\cdot{\frac{1}{3}}\\=\underline{\underline{\frac{5}{3}\approx1,667}}$
 
   f)
-#for $p^{\infty}$:
+for $p^{\infty}$:
 ```{r}
 P_infinity = round(matrix.power(B,1000000),2)
 print(P_infinity)
 ```
 
-We see the matrix converges in the recurrent states.
+We see the matrix converges in the recurrent states in class 1 and 2.
+\newpage
+
+\underline{\textbf{problem 6.3}}
+
+```{r}
+nu<-t(mP[1,])
+ # The first row vector of mP
+mI<-diag(rep(1,4))
+ # unitmatrix of order 4
+s<-mI[,1]
+ # first unit vector, e_1, in R**4
+msnu<-s%*%nu
+mR<- mP-msnu
+
+```
+

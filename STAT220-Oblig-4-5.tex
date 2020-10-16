@@ -158,6 +158,7 @@ Library in use:
 
 \begin{Shaded}
 \begin{Highlighting}[]
+<<<<<<< HEAD
 \KeywordTok{install_github}\NormalTok{(}\StringTok{"markheckmann/mat2tex"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -167,6 +168,12 @@ Library in use:
 ##   Use `force = TRUE` to force installation
 \end{verbatim}
 
+=======
+\KeywordTok{library}\NormalTok{(mat2tex)}
+\end{Highlighting}
+\end{Shaded}
+
+>>>>>>> c77b693d277632f65fcd54608676edaeda064dbc
 \underline{Problem 6.1}
 
 Vi har gitt transition matrix P:
@@ -325,7 +332,7 @@ being returned to State \(GR\) is \(100\%\)
 \begin{Highlighting}[]
 \NormalTok{f <-}\StringTok{ }\KeywordTok{graph_from_adjacency_matrix}\NormalTok{(A, }\DataTypeTok{weighted =} \StringTok{"prob"}\NormalTok{)}
 \KeywordTok{E}\NormalTok{(f)}\OperatorTok{$}\NormalTok{prob <-}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(}\KeywordTok{is.nan}\NormalTok{(}\KeywordTok{E}\NormalTok{(f)}\OperatorTok{$}\NormalTok{prob), }\OtherTok{NA}\NormalTok{, }\KeywordTok{E}\NormalTok{(f)}\OperatorTok{$}\NormalTok{prob)}
-\KeywordTok{plot}\NormalTok{(f, }\DataTypeTok{edge.label =} \KeywordTok{round}\NormalTok{(}\KeywordTok{E}\NormalTok{(f)}\OperatorTok{$}\NormalTok{prob, }\DecValTok{2}\NormalTok{),}\DataTypeTok{vertex.size=}\DecValTok{40}\NormalTok{, }\DataTypeTok{edge.arrow.size =} \FloatTok{.25}\NormalTok{, }\DataTypeTok{edge.curved=}\FloatTok{0.3}\NormalTok{, }\DataTypeTok{edge.label.cex =} \FloatTok{.5}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(f, }\DataTypeTok{edge.label =} \KeywordTok{round}\NormalTok{(}\KeywordTok{E}\NormalTok{(f)}\OperatorTok{$}\NormalTok{prob, }\DecValTok{2}\NormalTok{),}\DataTypeTok{vertex.size=}\DecValTok{30}\NormalTok{, }\DataTypeTok{edge.arrow.size =} \FloatTok{.25}\NormalTok{, }\DataTypeTok{edge.curved=}\FloatTok{0.3}\NormalTok{, }\DataTypeTok{edge.label.cex =} \FloatTok{.5}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -376,15 +383,40 @@ Due to previous use of P as variable, it is here substituted for B a)
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{B=}\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{((}\DecValTok{1}\OperatorTok{/}\DecValTok{3}\NormalTok{), }\FloatTok{0.0}\NormalTok{, (}\DecValTok{1}\OperatorTok{/}\DecValTok{3}\NormalTok{), }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, (}\DecValTok{1}\OperatorTok{/}\DecValTok{3}\NormalTok{), }
+\NormalTok{B=}\KeywordTok{round}\NormalTok{(}\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{((}\DecValTok{1}\OperatorTok{/}\DecValTok{3}\NormalTok{), }\FloatTok{0.0}\NormalTok{, (}\DecValTok{1}\OperatorTok{/}\DecValTok{3}\NormalTok{), }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, (}\DecValTok{1}\OperatorTok{/}\DecValTok{3}\NormalTok{), }
 \NormalTok{           (}\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{), (}\DecValTok{1}\OperatorTok{/}\DecValTok{4}\NormalTok{), (}\DecValTok{1}\OperatorTok{/}\DecValTok{4}\NormalTok{), }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }
            \FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, (}\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{), }\FloatTok{0.0}\NormalTok{, (}\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{), }\FloatTok{0.0}\NormalTok{,}
 \NormalTok{           (}\DecValTok{1}\OperatorTok{/}\DecValTok{4}\NormalTok{), (}\DecValTok{1}\OperatorTok{/}\DecValTok{4}\NormalTok{), (}\DecValTok{1}\OperatorTok{/}\DecValTok{4}\NormalTok{), }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, (}\DecValTok{1}\OperatorTok{/}\DecValTok{4}\NormalTok{),}
            \FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{1.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }
-           \FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{1.0}\NormalTok{), }\DataTypeTok{nrow=}\DecValTok{6}\NormalTok{, }\DataTypeTok{ncol=}\DecValTok{6}\NormalTok{, }\DataTypeTok{byrow =} \OtherTok{TRUE}\NormalTok{)}
+           \FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{1.0}\NormalTok{), }\DataTypeTok{nrow=}\DecValTok{6}\NormalTok{, }\DataTypeTok{ncol=}\DecValTok{6}\NormalTok{, }\DataTypeTok{byrow =} \OtherTok{TRUE}\NormalTok{),}\DecValTok{2}\NormalTok{)}
 \KeywordTok{dimnames}\NormalTok{(B)=}\KeywordTok{list}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{'0'}\NormalTok{,}\StringTok{'1'}\NormalTok{,}\StringTok{'2'}\NormalTok{,}\StringTok{'3'}\NormalTok{,}\StringTok{'4'}\NormalTok{,}\StringTok{'5'}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\StringTok{'0'}\NormalTok{,}\StringTok{'1'}\NormalTok{,}\StringTok{'2'}\NormalTok{,}\StringTok{'3'}\NormalTok{,}\StringTok{'4'}\NormalTok{,}\StringTok{'5'}\NormalTok{))}
+\KeywordTok{print}\NormalTok{(B)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+##      0    1    2 3   4    5
+## 0 0.33 0.00 0.33 0 0.0 0.33
+## 1 0.50 0.25 0.25 0 0.0 0.00
+## 2 0.00 0.00 0.50 0 0.5 0.00
+## 3 0.25 0.25 0.25 0 0.0 0.25
+## 4 0.00 0.00 1.00 0 0.0 0.00
+## 5 0.00 0.00 0.00 0 0.0 1.00
+\end{verbatim}
+
+In a nicer way in Latex:
+
+\#\#\[P=\begin{equation*}
+##\mathbf{}\left[\begin{matrix}
+##\frac{1}{3} & 0 & \frac{1}{3} & \frac{1}{3} & 0 & 0 \\ 
+##\frac{1}{2} & \frac{1}{4} & \frac{1}{4} & 0 & 0 & 0 \\
+##0 & 0 & \frac{1}{2} & 0 & \frac{1}{2} & 0 & \\
+##\frac{1}{4} & \frac{1}{4} & \frac{1}{4} & 0 & 0 & \frac{1}{4} \\
+##0 & 0 & 0 & 1 & 0 & 0 \\
+##0 & 0 & 0 & 0 & 0 & 1
+##\end{matrix}\right] 
+##\end{equation*}
+##\]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -427,19 +459,19 @@ end up in recurrent state class 1 or 2.
   \setcounter{enumii}{3}
   \tightlist
   \item
-    with statespace = \{1,3,0,2,4,5\}, we get following probability
-    matrix (Denoted - C in code):
+    Matrix realocated to statespace = \{1,3,0,2,4,5\}: (Matrix denoted -
+    C to separate matrixes in the code)
   \end{enumerate}
 \end{enumerate}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{C=}\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{((}\DecValTok{1}\OperatorTok{/}\DecValTok{4}\NormalTok{), }\FloatTok{0.0}\NormalTok{, (}\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{), (}\DecValTok{1}\OperatorTok{/}\DecValTok{4}\NormalTok{), }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }
-           \FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, (}\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{), (}\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{), }\FloatTok{0.0}\NormalTok{, }
+\NormalTok{C=}\KeywordTok{round}\NormalTok{(}\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{((}\DecValTok{1}\OperatorTok{/}\DecValTok{4}\NormalTok{), }\FloatTok{0.0}\NormalTok{, (}\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{), (}\DecValTok{1}\OperatorTok{/}\DecValTok{4}\NormalTok{), }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }
+\NormalTok{           (}\DecValTok{1}\OperatorTok{/}\DecValTok{4}\NormalTok{), }\FloatTok{0.0}\NormalTok{, (}\DecValTok{1}\OperatorTok{/}\DecValTok{4}\NormalTok{), (}\DecValTok{1}\OperatorTok{/}\DecValTok{4}\NormalTok{), }\FloatTok{0.0}\NormalTok{, (}\DecValTok{1}\OperatorTok{/}\DecValTok{4}\NormalTok{), }
            \FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, (}\DecValTok{1}\OperatorTok{/}\DecValTok{3}\NormalTok{), (}\DecValTok{1}\OperatorTok{/}\DecValTok{3}\NormalTok{), }\FloatTok{0.0}\NormalTok{, (}\DecValTok{1}\OperatorTok{/}\DecValTok{3}\NormalTok{),}
            \FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, (}\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{), (}\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{), }\FloatTok{0.0}\NormalTok{,}
            \FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{1.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }
-           \FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{1.0}\NormalTok{), }\DataTypeTok{nrow=}\DecValTok{6}\NormalTok{, }\DataTypeTok{ncol=}\DecValTok{6}\NormalTok{, }\DataTypeTok{byrow =} \OtherTok{TRUE}\NormalTok{)}
+           \FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{1.0}\NormalTok{), }\DataTypeTok{nrow=}\DecValTok{6}\NormalTok{, }\DataTypeTok{ncol=}\DecValTok{6}\NormalTok{, }\DataTypeTok{byrow =} \OtherTok{TRUE}\NormalTok{),}\DecValTok{2}\NormalTok{)}
 \KeywordTok{dimnames}\NormalTok{(C)=}\KeywordTok{list}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{'1'}\NormalTok{,}\StringTok{'3'}\NormalTok{,}\StringTok{'0'}\NormalTok{,}\StringTok{'2'}\NormalTok{,}\StringTok{'4'}\NormalTok{,}\StringTok{'5'}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\StringTok{'1'}\NormalTok{,}\StringTok{'3'}\NormalTok{,}\StringTok{'0'}\NormalTok{,}\StringTok{'2'}\NormalTok{,}\StringTok{'4'}\NormalTok{,}\StringTok{'5'}\NormalTok{))}
 
 \KeywordTok{print}\NormalTok{(C)}
@@ -447,40 +479,96 @@ end up in recurrent state class 1 or 2.
 \end{Shaded}
 
 \begin{verbatim}
-##      1 3         0         2   4         5
-## 1 0.25 0 0.5000000 0.2500000 0.0 0.0000000
-## 3 0.00 0 0.0000000 0.5000000 0.5 0.0000000
-## 0 0.00 0 0.3333333 0.3333333 0.0 0.3333333
-## 2 0.00 0 0.0000000 0.5000000 0.5 0.0000000
-## 4 0.00 0 0.0000000 1.0000000 0.0 0.0000000
-## 5 0.00 0 0.0000000 0.0000000 0.0 1.0000000
+##      1 3    0    2   4    5
+## 1 0.25 0 0.50 0.25 0.0 0.00
+## 3 0.25 0 0.25 0.25 0.0 0.25
+## 0 0.00 0 0.33 0.33 0.0 0.33
+## 2 0.00 0 0.00 0.50 0.5 0.00
+## 4 0.00 0 0.00 1.00 0.0 0.00
+## 5 0.00 0 0.00 0.00 0.0 1.00
 \end{verbatim}
 
+<<<<<<< HEAD
 In a nicer way in Latex:
 
 \[ A = " %_% C %_% "\]
+=======
+In a nicer way in Latex with original variable ``P'':
+
+\#\[P=\begin{equation*}
+#\mathbf{}\left[\begin{matrix}
+#\frac{1}{4} & 0 & \frac{1}{2} & \frac{1}{4} & 0 & 0\\ 
+#\frac{1}{4} & 0 & \frac{1}{4} & \frac{1}{4} & 0 & \frac{1}{4} & \\
+#0 & 0 & \frac{1}{3} & \frac{1}{3} & 0 & \frac{1}{3} & \\
+#0 & 0 & 0 & \frac{1}{2} & \frac{1}{2} & 0 \\
+#0 & 0 & 0 & 1 & 0 & 0 \\
+#0 & 0 & 0 & 0 & 0 & 1
+#\end{matrix}\right] 
+#\end{equation*}
+#\]
+>>>>>>> c77b693d277632f65fcd54608676edaeda064dbc
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
 \setcounter{enumi}{4}
-\tightlist
 \item
-  The only recurrent state is State 5, therefore the probability of
-  hitting recurrent state is given by vector:
 \end{enumerate}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{print}\NormalTok{(B[,}\DecValTok{6}\NormalTok{])}
+\NormalTok{R<-}\KeywordTok{round}\NormalTok{(}\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(C[}\DecValTok{1}\NormalTok{, }\DecValTok{4}\OperatorTok{:}\DecValTok{6}\NormalTok{],}
+\NormalTok{C[}\DecValTok{2}\NormalTok{, }\DecValTok{4}\OperatorTok{:}\DecValTok{6}\NormalTok{],}
+\NormalTok{C[}\DecValTok{3}\NormalTok{, }\DecValTok{4}\OperatorTok{:}\DecValTok{6}\NormalTok{]), }\DataTypeTok{nrow=}\DecValTok{3}\NormalTok{, }\DataTypeTok{ncol=}\DecValTok{3}\NormalTok{, }\DataTypeTok{byrow =} \OtherTok{TRUE}\NormalTok{), }\DecValTok{2}\NormalTok{)}
+\KeywordTok{dimnames}\NormalTok{(R)=}\KeywordTok{list}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{'1'}\NormalTok{,}\StringTok{'3'}\NormalTok{,}\StringTok{'0'}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\StringTok{'2'}\NormalTok{,}\StringTok{'4'}\NormalTok{,}\StringTok{'5'}\NormalTok{))}
+\KeywordTok{print}\NormalTok{(R)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-##         0         1         2         3         4         5 
-## 0.3333333 0.0000000 0.0000000 0.2500000 0.0000000 1.0000000
+##      2 4    5
+## 1 0.25 0 0.00
+## 3 0.25 0 0.25
+## 0 0.33 0 0.33
 \end{verbatim}
 
-This gives \(P_{0}(X_{T}=5)=P(X_{T}=5|X_{T-1}=0)=0.3333=\frac{1}{3}\)
-and the expectation \(E(X_{T}=5|X_{T-1}=0)\)
+\#\[R=\begin{equation*}
+#\mathbf{}\left[\begin{matrix}
+#\frac{1}{4} & 0 & 0\\ 
+#\frac{1}{4} & 0 & \frac{1}{4} & \\
+#\frac{1}{3} & 0 & \frac{1}{3} & \\
+#\end{matrix}\right] 
+#\end{equation*}\]
+
+\#This gives \(P_{0}(X_{T}=5)=P(X_{T}=5|X_{T-1}=0)=0.3333=\frac{1}{3}\)
+\#and the expectation
+\(E(X_{T}=5|X_{T-1})=1+\sum_{j\in{S}}E(T_{P}=j|X_{T-1}=0)\cdot{P(X_{T}=j|X_{T-1}=#0})\)
+\#\(=1+\sum_{j\in{S}}m_{0j}\cdot{P(X_{T}=j|X_{T-1}=0})\)
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  \#for \(p^{\infty}\):
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{P_infinity =}\StringTok{ }\KeywordTok{round}\NormalTok{(}\KeywordTok{matrix.power}\NormalTok{(B,}\DecValTok{1000000}\NormalTok{),}\DecValTok{2}\NormalTok{)}
+\KeywordTok{print}\NormalTok{(P_infinity)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   0 1    2 3    4    5
+## 0 0 0 0.33 0 0.16 0.49
+## 1 0 0 0.44 0 0.22 0.33
+## 2 0 0 0.67 0 0.33 0.00
+## 3 0 0 0.36 0 0.18 0.46
+## 4 0 0 0.67 0 0.33 0.00
+## 5 0 0 0.00 0 0.00 1.00
+\end{verbatim}
+
+We see the matrix converges in the recurrent states.
 
 \end{document}

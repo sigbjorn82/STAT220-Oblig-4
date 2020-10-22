@@ -269,12 +269,26 @@ b)
 M<-666 
 Gsv <- matrix(0,4,4)
 
-for(n in 0:M){Gsv<-Gsv + matrix.power(mR,n)}
+for(n in 0:M){
+  Gsv<-Gsv + matrix.power(mR,n)
+  }
 
 print(Gsv)
 ```
 
-```{r}
 
+```{r}
+pis<-nu%*%Gsv
+wtpi<- pis/sum(pis)
+```
+
+$\tilde{\pi}^{s}$:
+```{r}
+print(pis)
+```
+
+and the the normalised $\tilde{\pi}$:
+```{r}
+print(round(wtpi,4))
 ```
 

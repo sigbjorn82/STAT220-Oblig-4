@@ -91,9 +91,9 @@ Periodicity:
 Transient or recurrent? $\rightarrow$ It is recurrent!
   It might stop and loop at a position or between state 2 and 0 wich are comunicating, but eventually it will occure in any of the states by a certanty of 100% as in the formal definition:
    $f_{ii}=P(X_{n} = i, \textrm{for some } n\geq|w_{0}=i)$ for any state $i$ is Recurrent if $f_{ii}=1$ and transient if Recurrent if $f_{ii}<1$.
+\newpage
 
-
-\underline{Problem 6.?}
+\underline{Problem 6.?(fra første oppgave som ble lagt ut...)}
 
 a)
 $G: Green$
@@ -104,29 +104,20 @@ We start initiatly at $GR$ and pick a random ball with $p=1/2$. We ar then sent 
 ```{r}
 A=matrix(c(0, 1, 0, 0.5, 0, 0.5, 0, 1, 0), nrow=3, ncol=3, byrow = TRUE)
 dimnames(A)=list(c('GG','GR','RR'), c('GG','GR','RR'))
-```
-
-```{r}
 f <- graph_from_adjacency_matrix(A, weighted = "prob")
 E(f)$prob <- ifelse(is.nan(E(f)$prob), NA, E(f)$prob)
-plot(f, edge.label = round(E(f)$prob, 2),vertex.size=30, edge.arrow.size = .25, edge.curved=0.3, edge.label.cex = .5)
+plot(f, edge.label = round(E(f)$prob, 2),vertex.size=25, edge.arrow.size = .25, edge.curved=0.3, edge.label.cex = .4)
 ```
-
 Wich gives following matrix
-
-
 ```{r}
 print(A)
 ```
-
 and following for picking red ball in the future entering the state of $GR\rightarrow$ $P(X_{n}=j|X_{0}=1):$ #her må jeg få sendt ett spørsmål
 ```{r}
 print(A[2,])
 ```
 
-
-  b)
-    $d(GR)=2$ og $d(GG)=d(RR)=4$ som gir største felles nevner 2 og dermed er den periodisk med periode 2.
+b)$d(GR)=2$ og $d(GG)=d(RR)=4$ som gir største felles nevner 2 og dermed er den periodisk med d(i)=2.
 \newpage
 
 \underline{\textbf{Problem 6.2}}
@@ -240,6 +231,10 @@ s<-mI[,1]
 # first unit vector, e_1, in R**4
 msnu<-s%*%nu
 mR<- mP-msnu
+
+g <- graph_from_adjacency_matrix(mP, weighted = "prob")
+E(g)$prob <- ifelse(is.nan(E(g)$prob), NA, E(g)$prob)
+plot(g, edge.label = round(E(g)$prob, 2),edge.curved=0.3, edge.arrow.size = .25, edge.label.cex = .5)
 ```
 
 Vi har matrisen $P$:
@@ -309,5 +304,105 @@ print(wtpi-vPi)
 ```
 
 Diffrence between true and estimated $\pi_0$ is quite marginal (within 5 decimals).
+\newpage
+c)
+
+Since $\pi^{0}=(\text{1  0  0  0})$ and $\pi^{(n)}=\pi^{(0)}\cdot P^{n}$, we start off in $i_0$ and return to $i_0$ in $\pi^{(n)}$.
+```{r}
+
+dist_i_0 <- vector("list", 10)
+vpi_0 <- c(1,0,0,0)
+
+for(n in 1:10){
+  dist_i_0[n] <- (vpi_0 %*% (matrix.power(mP,n)))[1]
+}
+
+plot(c(1:10), dist_i_0, main="Distribution of return time for i[0]",
+ylab="Prb",
+xlab="n",
+type="l")
+```
+
+
+\underline{\textbf{problem 6.4}}
+
+a)
+since one propertie of transition matrix $\sum_{n=0}^{\infty} P_{ij} = 1$ and $P_{ij}\geqslant 0$ for any element $\delta$ picked $\delta>0$ therfore $P_{ij}\geqslant \delta$.\newline
+Since $P_{ij}^{(n)}= P^{n}\rightarrow \text{finite geometric series}$ teh series need to for converge. As for any geometric series  $lim_{n\to\infty}\sum_{n=0}^{\infty} a\cdot r^n \rightarrow \infty$ unless $1\geqslant|r|$ and since transition matrix by definition is nonegative all elements $P_{ij}>0$ for $n>0$ $\sum_{n=0}^{\infty} P_{ij}^{(n)} = 1$ if and only if $0<P_{ij}<1$.\newline
+We therofre can coclude that there is an $P_{ij}^{(n)}\geqslant 0$ for any element $\delta$ picked $\delta>0$ therfore $P_{ij}^{(n)}\geqslant \delta$.
+
+b)
+
+\underline{\textbf{problem 6.5}}
+
+a)
+```{r}
+mN=matrix(c(0, 1, 1, 0), nrow=2, ncol=2, byrow = TRUE)
+dimnames(mN)=list(c('E0','E1'), c('E0','E1'))
+
+f <- graph_from_adjacency_matrix(mN, weighted = "prob")
+E(f)$prob <- ifelse(is.nan(E(f)$prob), NA, E(f)$prob)
+plot(f, edge.label = round(E(f)$prob, 2),vertex.size=20, edge.arrow.size = .30, edge.curved=0.3, edge.arrow.size = .25, edge.label.cex = .5)
+```
+
+$E_0=\{j:\sum_{h\geqslant 1} P_{0j}^{(hd)} \}=P_{0j}^{(0)}+P_{0j}^{(2)}+P_{0j}^{(4)}+...+P_{0j}^{(h\cdot 2)}\\E_1=\{j:\sum_{h\geqslant 1} P_{0j}^{(hd+1)} \}=P_{0j}^{(1)}+P_{0j}^{(3)}+P_{0j}^{(5)}+...+P_{0j}^{(h\cdot 2+1)}\\$
+
+we se that $E_{0}$ covers all even phases of the sequence and $E_{1}$ all odds hence:
+
+$E_{0}\cup E_{1} = \{j:\sum_{h\geqslant 1} P_{0j}^{(hd)} \}+\{j:\sum_{h\geqslant 1} P_{0j}^{(hd+1)} \}\\=P_{0j}^{(0)}+P_{0j}^{(1)}+P_{0j}^{(2)}+P_{0j}^{(3)}+P_{0j}^{(4)}+...+P_{0j}^{(hd)}+P_{0j}^{(hd+1)}+P_{0j}^{(N)}=S$
+
+b)
+
+$E_{0}\cap E_{1} = \{j:\sum_{h\geqslant 1} P_{0j}^{(hd)} \}\cdot\{j:\sum_{h\geqslant 1} P_{0j}^{(hd+1)} \}\\=P_{0j}^{(0)}\cdot P_{0j}^{(1)} \cdot P_{0j}^{(2)} \cdot P_{0j}^{(3)} \cdot P_{0j}^{(4)} \cdot\text{ } ...\text{ } \cdot P_{0j}^{(hd)} \cdot P_{0j}^{(hd+1)} \cdot P_{0j}^{(N)}=\phi$\newline
+since we are either in $E_0$ or $E_1$ $P(E_0|E_1)=1$ and $P(E_1|E_0)=1$ wich gives us $P_{0j}^{(hd)}=0$ or $P_{0j}^{(hd+1)}=0$\newline and $E_{0}\cap E_{1} =\phi$
 
 c)
+
+```{r}
+print(mN)
+```
+
+since $E_{0}\cap E_{1} =\phi$ we can say with certainty that they are interdependent and since $ E_0 \ cup E_1 = S $ we get one shift of state in each phase such that is is not self recurrent.
+
+d)
+$P^{2}$ is reducable and therfore $|E_0|=|E_1|$:
+```{r}
+mN2<-matrix.power(mN,2)
+dimnames(mN2)=list(c('E0','E1'), c('E0','E1'))
+
+print(mN2)
+```
+```{r}
+f <- graph_from_adjacency_matrix(mN2, weighted = "prob")
+E(f)$prob <- ifelse(is.nan(E(f)$prob), NA, E(f)$prob)
+plot(f, edge.label = round(E(f)$prob, 2),vertex.size=20, edge.arrow.size = .30, edge.curved=0.3, edge.arrow.size = .25, edge.label.cex = .5)
+```
+\newpage
+\underline{\textbf{problem 6.6}}
+
+a)
+
+  Since $P_{ij}^{(n)}>0$ is irreducable and finite the transition matrix will according to Ergodic Theorem nonnull and:
+  
+  $\lim_{n \to \infty} P_{ij}^{(n)}\longrightarrow\overrightarrow\pi_{i}=(\pi_0,..\pi_{N})$
+  
+b)
+
+  Same will apply for N+1:
+  
+  $\lim_{n \to \infty} P_{ij}^{(n)}\longrightarrow\overrightarrow\pi_{i+1}=(\pi_0,.., \pi_{N}, \pi_{N+1})$
+\newpage  
+\underline{\textbf{problem 6.7}}
+A and B are two diferent classes, say Class A contains the subset $A=\{0,1\}$ andclass B the subset $B=\{2,3\}:
+```{r}
+mM=matrix(c(0,1, 0, 0,
+            (1/2),0, (1/2), 0, 
+            0, 0, 0, 1,
+            0, 0, (1/2), (1/2)), nrow=4, ncol=4, byrow = TRUE)
+dimnames(mM)=list(c('0','1','2','3'), c('0','1','2','3'))
+
+f <- graph_from_adjacency_matrix(mM, weighted = "prob")
+E(f)$prob <- ifelse(is.nan(E(f)$prob), NA, E(f)$prob)
+plot(f, edge.label = round(E(f)$prob, 2),vertex.size=20, edge.arrow.size = .30, edge.curved=0.3, edge.arrow.size = .25, edge.label.cex = .5)
+```
+As the graph shows A is transient since it can access B without beeing able to recive from B.
